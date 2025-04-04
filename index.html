@@ -1,0 +1,309 @@
+<html lang="en"><head><script type="text/javascript">
+
+</script>
+
+
+
+
+
+    
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=yes">
+        <title>DDY 435</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: #000;
+    }
+    #UnMutePlayer {
+        position: absolute;
+        right: 10px; /* Position adjusted to the top right corner */
+        top: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+    }
+    .unmute-button {
+        width: 100px; /* Reduced width from 160px to 100px */
+        height: 80px; /* Reduced height from 120px to 80px */
+        background: rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(10px);
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+    }
+    .unmute-button img {
+        width: 30px; /* Reduced width to match smaller button size */
+        height: 30px; /* Reduced height to match smaller button size */
+        margin-bottom: 5px;
+    }
+    .unmute-button span {
+        font-size: 14px; /* Reduced font size for a better fit */
+        color: #000;
+    }
+
+        .media-control .bar-scrubber {
+        display: none; /* Hide the seekbar */
+    }
+body, #player {
+    position: relative; /* Ensure proper positioning context */
+}
+
+#player {
+    z-index: 1; /* Make sure the player doesn't overlay the button */
+}
+
+#UnMutePlayer {
+    z-index: 9999; /* Keep this higher than the player */
+}
+
+</style>
+        <script>
+            var embedPlayer = true;
+        </script>
+<script type="text/javascript">
+
+
+var allowedDomains = JSON.parse(atob(encodedDomains));
+
+function getHostname(url) {
+    try {
+        return new URL(url).hostname;
+    } catch (e) {
+        return "";
+    }
+}
+
+var currentReferer = document.referrer;
+var refererHostname = getHostname(currentReferer);
+console.log("Current Referrer:", currentReferer);
+console.log("Referer Hostname:", refererHostname);
+
+if (currentReferer === "" || allowedDomains.indexOf(refererHostname) === -1) {
+  
+} else {
+    console.log("Referrer is allowed");
+}
+
+
+
+
+</script>
+
+
+
+     
+    
+
+
+
+ </head><body><div style="display:none;">
+<script id="_waumzx">var _wau = _wau || []; _wau.push(["classic", "z40275d9u2", "mzx"]);</script><script async="" src="js/c.js"></script>
+</div>
+    <!-- Histats.com  START  (aync)-->
+<script type="text/javascript">var _Hasync= _Hasync|| [];
+_Hasync.push(['Histats.start', '1,4922300,4,0,0,0,00010000']);
+_Hasync.push(['Histats.fasi', '1']);
+_Hasync.push(['Histats.track_hits', '']);
+_Hasync.push(['Histats.framed_page', '']);
+(function() {
+var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
+hs.src = ('//s10.histats.com/js15_as.js');
+(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
+})();</script>
+<noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?4922300&101" alt="best website stats" border="0"></a></noscript>
+<!-- Histats.com  END  -->
+
+
+
+ <div style="display:none;">
+<script type="text/javascript"> setInterval( "vwu()", 300000 ); function vwu(){ if(document.images){ document.images['viewers'].src = 'http://whos.amung.us/cwidget/1fkcex8f0d/000000ffffff.png'? + Date.parse(new Date().toString()); } } </script><div style="visibility:hidden"><img name="viewers" src="images/draw.png"></div>
+
+
+</div>
+
+    
+    
+        <div id="player"></div>
+
+
+
+  <meta charset="UTF-8">
+  <title>Player</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+    /* Outer container covers the entire viewport */
+    #player-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: linear-gradient(135deg, #0d0d0d, #3a3a3a);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+    /* Loader styling */
+    #loader {
+      text-align: center;
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    #loader .spinner {
+      width: 80px;
+      height: 80px;
+      border: 10px solid rgba(255,255,255,0.3);
+      border-top: 10px solid #fff;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    #loader .text {
+      margin-top: 15px;
+      font-size: 20px;
+    }
+    /* Player container (will hold the Clappr player) */
+    #clappr-container {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+  </style>
+
+
+
+  <!-- Outer container: initially shows the loader -->
+  <div id="player-container">
+    <div id="loader">
+      <div class="spinner"></div>
+      <div class="text">Loading...</div>
+    </div>
+  </div>
+
+  <!-- Include the Clappr player library -->
+  <script src="js/clappr.min.js"></script>
+
+  <script>
+    var player;
+
+    // Extract the channel key using PHP.
+    // For example, if $embed = "https://masxs.mizhls.ru/lb/wikinhl1/index.m3u8",
+    // then channelKey will be "wikinhl1".
+    var channelKey = "premium435";
+    console.log("Channel Key:", channelKey);
+
+    // Function: Remove loader and create a container for the player.
+    function showPlayerContainer() {
+      var outer = document.getElementById("player-container");
+      // Remove loader
+      var loader = document.getElementById("loader");
+      if (loader) {
+        loader.parentNode.removeChild(loader);
+      }
+      // Create (or ensure) the player container exists.
+      var playerDiv = document.getElementById("clappr-container");
+      if (!playerDiv) {
+        playerDiv = document.createElement("div");
+        playerDiv.id = "clappr-container";
+        playerDiv.style.width = "100%";
+        playerDiv.style.height = "100%";
+        outer.appendChild(playerDiv);
+      }
+    }
+
+    // Fetch the server key from your server_lookup.php.
+    fetch('https://webxzplay.cfd/server_lookup.php?channel_id=' + channelKey)
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {
+        
+        var serverKey = "zeko";
+        console.log("Server Key:", serverKey);
+
+       
+        var m3u8Url = (serverKey === "top1/cdn") ?
+            "https://top1.newkso.ru/top1/premium435/mono.m3u8" :
+            "https://zekonew.newkso.ru/zeko/premium435/mono.m3u8";
+        console.log("Final m3u8Url:", m3u8Url);
+
+        // Remove the loader and create the Clappr player container.
+        showPlayerContainer();
+
+        // Initialize the Clappr player inside the "clappr-container".
+        player = new Clappr.Player({
+          source: m3u8Url,
+          parentId: "#clappr-container",
+          autoPlay: true,
+          height: "100%",
+          width: "100%",
+          disableErrorScreen: true,
+          mute: true,
+          mediacontrol: {
+            seekbar: "#E0CDA9",
+            buttons: "#E0CDA9"
+          }
+        });
+
+        // Optional: Error handling with retry.
+        player.on(Clappr.Events.PLAYER_ERROR, function(error) {
+          console.error("Player error:", error);
+          var retryCount = 0, maxRetries = 3, retryDelay = 10000;
+          var retryInterval = setInterval(function() {
+            if (retryCount < maxRetries) {
+              console.log("Retrying player load... Attempt " + (retryCount + 1));
+              player.load(player.options.source.trim());
+              player.play();
+              player.unmute();
+              player.setVolume(100);
+              retryCount++;
+            } else {
+              console.error("Max retry attempts reached. Please check the stream source.");
+              clearInterval(retryInterval);
+            }
+          }, retryDelay);
+        });
+      })
+      .catch(function(error) {
+        console.error("Error during server lookup:", error);
+        document.getElementById("player-container").innerHTML = "ID premium435 might be dead!!";
+      });
+  </script>
+
+  <script type="text/javascript">
+    function WSUnmute() {
+      document.getElementById("UnMutePlayer").style.display = "none";
+      player.setVolume(100);
+    }
+  </script>
+
+
+
+        <div id="UnMutePlayer" style="display: flex;">
+            <button class="unmute-button" onclick="WSUnmute()">
+                <img src="images/Speaker_Icon.svg" alt="Unmute">
+                <span>Unmute</span>
+            </button>
+        </div>
+    
+
+</body></html>
